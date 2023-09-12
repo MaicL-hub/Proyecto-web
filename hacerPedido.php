@@ -28,7 +28,8 @@ if ($result->num_rows > 0) {
 
     //
     // *** To Email ***
-    $to = 'a20310030@ceti.mx';
+    //$to = 'a20310030@ceti.mx';
+    $to = 'rsantana@ceti.mx';
     //
     // *** Subject Email ***
     $subject = 'Pedido recibido';
@@ -37,7 +38,8 @@ if ($result->num_rows > 0) {
     $content = "Pedido:\nFecha pedido: " . $fechaPedido . "\nFecha entrega: " . $fechaEntrega . "\nEstado pedido: " . $estadoEnvio . "\nTotal: " . $total . "$";
     //
     //*** Head Email ***
-    $headers = "From: mikylopezesparza@gmail.com\r\n";
+    //$headers = "From: mikylopezesparza@gmail.com\r\n";
+    $headers = "a20310030@ceti.mx\r\n";
     //
 
 mail($to, $subject, $content, $headers);

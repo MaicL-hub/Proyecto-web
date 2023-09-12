@@ -1,8 +1,8 @@
 <?php
 $server = "localhost";
 $database = "cocoteca";
-$username = "root";
-$password = "";
+$username = "maic";
+$password = "1234";
 
 $con = mysqli_connect($server, $username, $password, $database);
 ?>
