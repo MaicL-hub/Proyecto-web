@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La cocoteca</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<nav>
+  <div class="nav">
+  <ul>
+      <li class="nav-item">
+      <a class="nav-link" href="index.html">Home</a>
+      </li>
+      <li class="nav-item">
+      <a class="nav-link" href="Productos.php">Productos</a>
+      </li>
+      <li class="nav-item">
+      <a class="nav-link" href="Ubicacion.html">Ubicacion</a>
+      </li>
+      <li class="nav-item">
+      <a class="nav-link" href="Registro.html">Registro</a>
+      </li>
+      <li class="nav-item">
+      <a class="nav-link" href="Login.html">Login</a>
+      </li>
+      <li class="nav-item">
+      <a class="nav-link" href="Carrito.php">Carrito</a>
+      </li>
+      <li class="nav-item">
+      <a class="nav-link" href="Pedidos.php">Pedidos</a>
+      </li>
+  </ul>
+  </div>
+</nav>
+<body>
+  
+    <div class="Registro">
+        <form method="POST" action="registro.php" class="form">
+          <h1 class="title">Registro</h1>
+    
+          <div class="inputContainer">
+            <input type="text" class="input" name="nombre" placeholder="Nombre">
+            <label for="" class="label">Nombre</label>
+          </div>
+    
+          <div class="inputContainer">
+            <input type="text" class="input" name="correo" placeholder="ejemplo@gmail.com">
+            <label for="" class="label">Correo electronico</label>
+          </div>
+
+          <div class="inputContainer">
+            <input type="password" class="input" name="contrasena" placeholder="********">
+            <label for="" class="label">Contraseña</label>
+          </div>
+    
+          <div class="inputContainer">
+            <input type="text" class="input" name="direccion" placeholder="direccion">
+            <label for="" class="label">Direccion</label>
+          </div>
+
+          <div class="inputContainer">
+            <input type="number" class="input" name="telefono" placeholder="33-65465493">
+            <label for="" class="label">Telefono</label>
+          </div>
+
+          <div class="inputContainer">
+            <input type="date" class="input" name="fNacimiento" placeholder="19/09/1999">
+            <label for="" class="label"></label>
+          </div>
+
+          <div class="inputContainer">
+            <input type="text" class="input" name="infoPago" placeholder="134-6555734-54">
+            <label for="" class="label">Informacion de pago</label>
+          </div>
+    
+          <input type="submit" class="submitBtn" value="Crear perfil">
+        </form>
+      </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Style.css">
+  <title>Lista de Usuarios</title>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav">
+      <ul>
+        <li class="nav-item">
+          <a class="nav-link" href="UsuariosAdmin.php">Usuarios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="LibrosAdmin.php">Libros</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <body>
+  <div class="Registro">
+    <form method="POST" action="AgregarLibrosAdmin.php" class="form">
+        <h1 class="title">Agregar Libros</h1>
+    
+        <div class="inputContainer">
+            <input type="text" class="input" name="portada" placeholder="URL de la portada">
+            <label for="" class="label">Portada</label>
+        </div>
+    
+        <div class="inputContainer">
+            <input type="text" class="input" name="titulo" placeholder="Título del libro">
+            <label for="" class="label">Título</label>
+        </div>
+    
+        <div class="inputContainer">
+            <input type="text" class="input" name="autor" placeholder="Autor del libro">
+            <label for="" class="label">Autor</label>
+        </div>
+    
+        <div class="inputContainer">
+            <input type="text" class="input" name="editorial" placeholder="Editorial del libro">
+            <label for="" class="label">Editorial</label>
+        </div>
+    
+        <div class="inputContainer">
+            <input type="text" class="input" name="genero" placeholder="Género del libro">
+            <label for="" class="label">Género</label>
+        </div>
+    
+        <div class="inputContainer">
+            <input type="number" class="input" name="precio" placeholder="Precio del libro">
+            <label for="" class="label">Precio</label>
+        </div>
+    
+        <div class="inputContainer">
+            <input type="number" class="input" name="paginas" placeholder="Número de páginas">
+            <label for="" class="label">Páginas</label>
+        </div>
+    
+        <div class="inputContainer">
+            <input type="text" class="input" name="isbn" placeholder="ISBN del libro">
+            <label for="" class="label">ISBN</label>
+        </div>
+    
+        <div class="inputContainer">
+            <input type="date" class="input" name="fechaPubli" placeholder="Fecha de publicación">
+            <label for="" class="label">Fecha de Publicación</label>
+        </div>
+    
+        <input type="submit" class="submitBtn" value="Crear libro">
+    </form>
+    </form>
+  </div>
+</body>
