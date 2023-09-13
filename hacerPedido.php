@@ -86,7 +86,7 @@ try {
     //Recipients
     $mail->setFrom('a20310030@ceti.mx', 'Miguel Lopez');
     $mail->addAddress('a20310030@ceti.mx');     //Add a recipient
-    $mail->addAddress('mikylopezesparza@gmail.com');               //Name is optional
+    // $mail->addAddress('rsantana@ceti.mx');               //Name is optional
     // $mail->addReplyTo('info@example.com', 'Information');
     // $mail->addCC('cc@example.com');
     // $mail->addBCC('bcc@example.com');
