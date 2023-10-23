@@ -39,13 +39,30 @@
     // Conexión a la base de datos
     include 'conexion.php';
 
+    session_start();
+
+    // Acceder a las variables de sesión
+    $email = $_SESSION['email'];
+    $id = $_SESSION['id'];
+
+    // Especificar el directorio a buscar
+    $directorio = 'pedidos/';
+
+    // Especificar el patrón de búsqueda
+    $patron = '*-' . $id . '.pdf';
+
+    // Buscar archivos PDF que coincidan con el patrón
+    $pdfs = glob($directorio . $patron);
+
+    $i = 0;
+
     // Consulta a la base de datos
-    $sql = "SELECT fechaPedido, fechaEntrega, estadoPedido, total, costoEnvio FROM pedidos";
+    $sql = "SELECT idUsuario, fechaPedido, fechaEntrega, estadoPedido, total, costoEnvio FROM pedidos where idUsuario = $id";
     $result = $con->query($sql);
 
     // Desplegar lista de pedidos
     echo "<table>";
-    echo "<tr><th>Fecha de Pedido</th><th>Fecha de Entrega</th><th>Estado del Pedido</th><th>Total</th><th>Costo de Envío</th></tr>";
+    echo "<tr><th>Fecha de Pedido</th><th>Fecha de Entrega</th><th>Estado del Pedido</th><th>Total</th><th>Costo de Envío</th><th>Pdf</th></tr>";
     while($row = $result->fetch_assoc()) {
         echo "<tr>";
         echo "<td>" . $row["fechaPedido"] . "</td>";
@@ -53,11 +70,11 @@
         echo "<td>" . $row["estadoPedido"] . "</td>";
         echo "<td>" . $row["total"] . "</td>";
         echo "<td>" . $row["costoEnvio"] . "</td>";
+        echo "<td>" .  "<a href='" . $pdfs[$i] . "'>" . $pdfs[$i] . "</a><br>" . "</td>";
         echo "</tr>";
+        $i++;
     }
     echo "</table>";
-
-    // Cerrar conexión
     $con->close();
 ?>
 </body>

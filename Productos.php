@@ -29,13 +29,15 @@
       <a class="nav-link" href="Carrito.php">Carrito</a>
       </li>
       <li class="nav-item">
-      <a class="nav-link" href="Pedidos.php">Pedidos</a>
+      <!-- <a class="nav-link" href="http://localhost/Proyecto-webdav/index.php">Pedidos</a> -->
+      <a class="nav-link" href="http://10.0.0.5\var\www\webdav\Proyecto-webdav\pedidos\index.php">Pedidos</a>
       </li>
     </ul>
     </div>
 </nav>
 <body>
 <section class="productos">
+  
 <?php
     // Conexión a la base de datos
     include 'conexion.php';
@@ -50,7 +52,7 @@
         echo '<img src="' . $row["portada"] . '" alt="' . $row["titulo"] . '">';
         echo '<p class="producto-titulo">' . $row["titulo"] . '</p>';
         echo '<p class="producto-precio">$' . $row["precio"] . '</p>';
-        echo '<a href="detallelibro.php?id=' . $row["id"] . '" class="boton">Ver más</a>';
+        echo '<a href="detalleLibro.php?id=' . $row["id"] . '" class="boton">Ver más</a>';
         echo '</div>';
     }
 

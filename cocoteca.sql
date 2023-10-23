@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-09-2023 a las 18:47:40
+-- Tiempo de generación: 23-10-2023 a las 22:35:04
 -- Versión del servidor: 11.1.0-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `cocoteca`
 --
-CREATE DATABASE IF NOT EXISTS `cocoteca` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `cocoteca`;
 
 -- --------------------------------------------------------
 
@@ -43,10 +41,12 @@ CREATE TABLE `carritos` (
 --
 
 INSERT INTO `carritos` (`id`, `fechaPedido`, `fechaEntrega`, `descuentos`, `subtotal`, `impuestos`) VALUES
-(6, '2023-05-16', '2023-05-23', 0, 566, 119),
-(12, '2023-06-19', '2023-06-26', 0, 2285, 480),
-(14, '2023-06-19', '2023-06-26', 0, 50, 11),
-(15, '2023-06-19', '2023-06-26', 0, 457, 96);
+(20, '2023-09-13', '2023-09-20', 0, 283, 59),
+(21, '2023-09-13', '2023-09-20', 0, 649, 136),
+(23, '2023-09-13', '2023-09-20', 0, 457, 96),
+(28, '2023-10-23', '2023-10-30', 0, 283, 59),
+(29, '2023-10-23', '2023-10-30', 0, 649, 136),
+(33, '2023-10-23', '2023-10-30', 0, 649, 136);
 
 -- --------------------------------------------------------
 
@@ -86,6 +86,7 @@ INSERT INTO `libros` (`id`, `portada`, `titulo`, `autor`, `editorial`, `genero`,
 
 CREATE TABLE `pedidos` (
   `id` bigint(20) NOT NULL,
+  `idUsuario` varchar(50) DEFAULT NULL,
   `fechaPedido` date DEFAULT NULL,
   `fechaEntrega` date DEFAULT NULL,
   `estadoPedido` varchar(50) DEFAULT NULL,
@@ -97,20 +98,11 @@ CREATE TABLE `pedidos` (
 -- Volcado de datos para la tabla `pedidos`
 --
 
-INSERT INTO `pedidos` (`id`, `fechaPedido`, `fechaEntrega`, `estadoPedido`, `total`, `costoEnvio`) VALUES
-(1, '2023-05-16', '2023-05-23', 'enviado', 649, 0),
-(4, '2023-05-16', '2023-05-23', 'enviado', 2085, 0),
-(5, '2023-05-16', '2023-05-23', 'enviado', 4865, 0),
-(6, '2023-05-16', '2023-05-23', 'enviado', 1415, 0),
-(7, '2023-06-14', '2023-06-21', 'enviado', 4113, 0),
-(8, '2023-06-14', '2023-06-21', 'enviado', 3475, 0),
-(10, '2023-06-14', '2023-06-21', 'enviado', 649, 0),
-(11, '2023-06-14', '2023-06-21', 'enviado', 283, 0),
-(12, '2023-05-16', '2023-05-23', 'enviado', 457, 0),
-(13, '2023-05-16', '2023-05-23', 'enviado', 566, 0),
-(24, '2023-06-19', '2023-06-26', 'enviado', 2264, 0),
-(25, '2023-06-19', '2023-06-26', 'enviado', 3245, 0),
-(26, '2023-06-19', '2023-06-26', 'enviado', 649, 0);
+INSERT INTO `pedidos` (`id`, `idUsuario`, `fechaPedido`, `fechaEntrega`, `estadoPedido`, `total`, `costoEnvio`) VALUES
+(48, '1', '2023-09-13', '2023-09-20', 'enviado', 457, 0),
+(50, '1', '2023-10-23', '2023-10-30', 'enviado', 1390, 0),
+(51, '9', '2023-10-23', '2023-10-30', 'enviado', 1947, 0),
+(53, '1', '2023-09-13', '2023-09-20', 'enviado', 695, 0);
 
 -- --------------------------------------------------------
 
@@ -135,7 +127,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `correo`, `contrasena`, `direccion`, `telefono`, `fNacimiento`, `infoPago`, `administrador`) VALUES
-(1, 'Ross', 'roos@gmail.com', '1111', 'calle a', 3334784686, '1999-01-01', 'sdfg', 1),
+(1, 'Ross', 'rsantana@ceti.mx', '1111', 'calle a', 3334784686, '1999-01-01', 'sdfg', 0),
 (2, 'Maic', 'maic@gmail.com', '1111', 'Calle b', 3309984356, '2023-05-16', 'Tarjeta de credito', 1),
 (3, 'Erick', 'erick@gmail.com', '3333', 'calle c', 3365986843, '1999-01-03', 'hred', 1),
 (4, 'Jair', 'jair@gmail.com', '4444', 'calle d', 3375549865, '1999-01-04', 'hrtd', 1),
@@ -143,7 +135,7 @@ INSERT INTO `usuarios` (`id`, `nombre`, `correo`, `contrasena`, `direccion`, `te
 (7, 'efde', 'edwef', 'edwfegr', 'dfvedg', 4567, '2023-05-18', 'defghjkl', 0),
 (9, 'Jorge', 'jorge@gmail.com', 'abcd', 'Calle f', 3380782123, '1999-01-07', 'Tarjeta de credito', 0),
 (13, 'toño', 'esgfdhgf', '1111', '1111', 23, '2023-06-18', 'tarjeta', 0),
-(15, 'adrian', 'rsantana@ceti.mx', '1234', 'calle h', 8787878787, '2023-06-19', 'Tarjeta de credito', 0),
+(15, 'adrian', 'erhheehee', '1234', 'calle h', 8787878787, '2023-06-19', 'Tarjeta de credito', 0),
 (17, 'pedro', 'correo', '1111', 'calle d', 1234, '2023-06-19', 'tarjeta', 0);
 
 --
@@ -182,7 +174,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `carritos`
 --
 ALTER TABLE `carritos`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de la tabla `libros`
@@ -194,7 +186,7 @@ ALTER TABLE `libros`
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

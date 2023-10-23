@@ -29,7 +29,8 @@
       <a class="nav-link" href="Carrito.php">Carrito</a>
       </li>
       <li class="nav-item">
-      <a class="nav-link" href="Pedidos.php">Pedidos</a>
+      <!-- <a class="nav-link" href="http://localhost/Proyecto-webdav/index.php">Pedidos</a> -->
+      <a class="nav-link" href="http://10.0.0.5\var\www\webdav\Proyecto-webdav\pedidos\index.php">Pedidos</a>
       </li>
   </ul>
   </div>
@@ -54,7 +55,7 @@
         echo "<td>" . $row["subtotal"] . "</td>";
         echo "<td>" . $row["impuestos"] . "</td>";
         echo "<td>";
-        echo '<a href="hacerPedido.php?id=' . $row["id"] . '">Hacer pedido</a>';
+        echo '<a href="http://10.0.0.5\var\www\webdav\Proyecto-webdav\hacerPedido.php?id=' . $row["id"] . '">Hacer pedido</a>';
         echo "</td>";
         echo "</tr>";
     }

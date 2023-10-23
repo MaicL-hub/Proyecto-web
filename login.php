@@ -14,6 +14,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $fila = mysqli_fetch_assoc($resultado);
         // Si se encontró un usuario con las credenciales dadas, se redirige a la página de inicio o a la página de administrador
         if ($fila['administrador'] == 0) {
+            // Iniciar sesión
+            session_start();
+            // Destruir la sesión
+            session_destroy();
+            session_start();
+
+                // Establecer variables de sesión
+            $_SESSION['email'] = $correo;
+            $_SESSION['id'] = $fila['id'];
             header("Location: index.html");
             exit();
         } else {

@@ -1,6 +1,10 @@
 <?php
 include 'conexion.php';
 $carritoId = $_GET['id'];
+session_start();
+
+$email = $_SESSION['email'];
+$id = $_SESSION['id'];
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -32,7 +36,7 @@ if ($result->num_rows > 0) {
     $costoEnvio = 0;
 
     // Insertar el pedido en la tabla "pedidos"
-    $sql = "INSERT INTO pedidos (id, fechaPedido, fechaEntrega, estadoPedido, total, costoEnvio) VALUES (0, '$fechaPedido', '$fechaEntrega', '$estadoEnvio', '$total', '$costoEnvio')";
+    $sql = "INSERT INTO pedidos (id, idUsuario, fechaPedido, fechaEntrega, estadoPedido, total, costoEnvio) VALUES (0, $id, '$fechaPedido', '$fechaEntrega', '$estadoEnvio', '$total', '$costoEnvio')";
     $resultado = mysqli_query($con, $sql);
 
     // //
@@ -60,14 +64,18 @@ if ($result->num_rows > 0) {
 
 //Create an instance; passing `true` enables exceptions
 
-$nombrepdf = "pedido" . $carritoId;
+$nombrepdf = "pedido-" . $carritoId . "-" . $id . ".pdf";
 
 $pdf = new FPDF();
 $pdf->AddPage();
 $pdf->SetFont('Arial','B',10);
 $pdf->Cell(40,10,utf8_decode($content));
-// $pdf->Output('C:\xampp\htdocs\Github\pedidos\\' . $nombrepdf . '.pdf','F');
-$pdf->Output('\var\www\html\Proyecto-web\pedidos\\' . $nombrepdf . '.pdf','F');
+
+
+    $pdf->Output('C:\xampp\htdocs\Github\pedidos\\' . $nombrepdf,'F');
+    //$pdf->Output('\var\www\html\Proyecto-web\pedidos\\' . $nombrepdf . '.pdf','F');
+
+
 // $pdf->Output($nombrepdf, '/pedidos');
 
 $mail = new PHPMailer(true);
@@ -86,15 +94,15 @@ try {
     //Recipients
     $mail->setFrom('a20310030@ceti.mx', 'Miguel Lopez');
     $mail->addAddress('a20310030@ceti.mx');     //Add a recipient
-    // $mail->addAddress('rsantana@ceti.mx');               //Name is optional
+    // $mail->addAddress($email);               //Name is optional
     // $mail->addReplyTo('info@example.com', 'Information');
     // $mail->addCC('cc@example.com');
     // $mail->addBCC('bcc@example.com');
 
     //Attachments
     // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
-    // $mail->addAttachment('C:\xampp\htdocs\Github\pedidos\\' . $nombrepdf . '.pdf', 'Pedido.pfd');    //Optional name
-    $mail->addAttachment('\var\www\html\Proyecto-web\pedidos\\' . $nombrepdf . '.pdf', 'Pedido.pfd');
+     $mail->addAttachment('C:\xampp\htdocs\Github\pedidos\\' . $nombrepdf . '.pdf', 'Pedido.pfd');    //Optional name
+    // $mail->addAttachment('\var\www\html\Proyecto-web\pedidos\\' . $nombrepdf . '.pdf', 'Pedido.pfd');
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
